@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteGrain } from "@/components/layout/site-grain";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           <SiteHeader />
           {children}
+          <SiteFooter />
           <SiteGrain />
         </ThemeProvider>
       </body>

@@ -17,9 +17,9 @@ import { cn } from "@/lib/utils";
 const LINKS = [
   { label: "Products", href: "/#products" },
   { label: "Method", href: "/#method" },
-  { label: "Open source", href: "/#open-source" },
+  { label: "Open source", href: "/open-source" },
   { label: "Ideas", href: "/ideas" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const CTA = { label: "Tell us what hurts", href: "/tell-us" };
