@@ -62,12 +62,12 @@ export default async function OpenSourcePage() {
     },
     {
       visibility: "private",
-      name: "godraw",
+      name: "Godraw",
       shape: "Web app",
       summary:
         "An infinite canvas for drawing systems that exports SQL you can actually run. It’s live, and the product link is the proof here, not the source.",
       status: "Live",
-      link: { href: "https://godraw.app", label: "Open godraw" },
+      link: { href: "https://godraw.app", label: "Open Godraw" },
     },
     {
       visibility: "private",
@@ -139,7 +139,7 @@ export default async function OpenSourcePage() {
         </Heading>
 
         <Lead className="mt-6 max-w-2xl">
-          godraw and Sextant are closed for now, and we’d rather say that
+          Godraw and Sextant are closed for now, and we’d rather say that
           plainly than let “open by default” imply more than it does. The
           direction is one way, though: things get opened as they stabilise,
           not sealed as they grow.
