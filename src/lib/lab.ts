@@ -28,33 +28,31 @@ export type TeamMember = {
   photo?: string;
 };
 
-// TODO: links. They're optional; any that are left out simply don't render.
-// For example:
-//   links: { github: "https://github.com/handle", x: "https://x.com/handle" }
+// Links are optional; any that are left out simply don't render.
 export const TEAM: readonly TeamMember[] = [
   {
     name: "Rishabh Gupta",
     role: "Engineer",
     line: "Takes the hardest problem on the board and makes it look like the easy one.",
-    links: {},
+    links: { linkedin: "https://www.linkedin.com/in/rishabh19g/" },
   },
   {
     name: "Hemant Yadav",
     role: "Engineer",
     line: "Won’t ship it until it’s right, and has a very particular idea of right.",
-    links: {},
+    links: { linkedin: "https://www.linkedin.com/in/hemant9610/" },
   },
   {
     name: "Nanak Gupta",
     role: "Engineer",
     line: "Writes code that does exactly what it says, which is rarer than it sounds.",
-    links: {},
+    links: { linkedin: "https://www.linkedin.com/in/nanak-gupta" },
   },
   {
     name: "Pratik Singh",
     role: "GTM",
     line: "Could sell you this pen. Only sells the ones that write.",
-    links: {},
+    links: { linkedin: "https://www.linkedin.com/in/pratik---singh" },
   },
 ];
 
