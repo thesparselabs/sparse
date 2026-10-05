@@ -68,6 +68,17 @@ export function Hero() {
             See our work
           </a>
         </div>
+
+        {/* docs/Idea.md §2: the constraint, set apart as its own line. */}
+        <div className="pointer-events-auto mt-9 flex max-w-xl flex-col items-center gap-4 sm:mt-11">
+          <span aria-hidden className="h-px w-10 bg-border" />
+          <p className="text-pretty text-sm leading-relaxed text-muted-foreground sm:text-[0.9375rem]">
+            Nothing ships that can’t ship in{" "}
+            <span className="text-foreground">15 days</span>. That isn’t a
+            schedule. It’s a filter — if an idea can’t survive being that
+            small, it isn’t the right idea yet.
+          </p>
+        </div>
       </div>
 
       {/*

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { GITHUB_ORG_URL } from "@/lib/github";
+import { GITHUB_ORG_URL, getRepo } from "@/lib/github";
+import { describeAge, describeMoment } from "@/lib/relative-time";
 
 type FooterLink =
   | { label: string; href: string; external?: boolean }
@@ -37,7 +38,21 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
 const linkClass =
   "text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
-export function SiteFooter() {
+/**
+ * docs/Idea.md §12's build note: each public repo's last update, read from
+ * GitHub and cached for an hour. The most honest cadence receipt on the page,
+ * and it keeps itself current. A repo GitHub can't answer for simply drops out.
+ */
+const RECEIPTS = [
+  { repo: "muneem", label: "Muneem" },
+  { repo: "sparse", label: "This site" },
+] as const;
+
+export async function SiteFooter() {
+  const receipts = await Promise.all(
+    RECEIPTS.map(async ({ repo, label }) => ({ label, data: await getRepo(repo) })),
+  );
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto w-full max-w-4xl px-5 pt-16 sm:px-8 sm:pt-20">
@@ -95,10 +110,34 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <p className="mt-14 text-sm text-muted-foreground">
-          © {new Date().getUTCFullYear()} TheSparseLabs. Built in the open, in
-          India.
-        </p>
+        <div className="mt-14 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getUTCFullYear()} TheSparseLabs. Built in the open,
+            in India.
+          </p>
+          <ul role="list" className="flex flex-wrap gap-x-6 gap-y-1 text-xs">
+            {receipts.map(({ label, data }) =>
+              data ? (
+                <li key={label}>
+                  <a
+                    href={data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {label} updated{" "}
+                    <time
+                      dateTime={data.pushedAt.toISOString()}
+                      title={describeMoment(data.pushedAt)}
+                    >
+                      {describeAge(data.pushedAt)}
+                    </time>
+                  </a>
+                </li>
+              ) : null,
+            )}
+          </ul>
+        </div>
       </div>
 
       {/* The wordmark as a watermark: the glyphs are transparent and clipped
